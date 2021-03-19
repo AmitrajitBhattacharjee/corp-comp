@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/scss/_buttons.scss" rel="stylesheet/scss"
+        type="text/css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/scss/_reboot.scss" rel="stylesheet/scss"
+        type="text/css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/navstyle.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body onload="vis();vis20Function();myFunction();">
+
+<!---------------NAVBAR------------>
+
+<div class="sidenav"  >
+        <ul>
+            <li>
+                <a onclick="vis1()">
+                    <div class="center  ">
+                    <img style="height: 80px; width:80px;" src="../image/female_avatar.png">
+                        <p style="font-size: 13px; text-align: center;"><%=user.Name%></p>
+                        </div>
+                </a>
+                </li>
+            <li>
+        <a onclick="vis2();vis2Function();">
+            <div class="center">
+            <img id="my-img" src="../image/Component 3 – 10.png">
+            <p style="font-size: 13px; text-align: center;">Analytics</p>
+            </div>
+        </a>
+        </li>
+        <li>
+        <a onclick="vis3()">
+            <div class="center">
+                <img id="my-img2" src="../image/Component 4 – 39.png">
+                <p style="font-size: 13px; text-align: center;">Add Lead</p>
+                </div>
+        </a>
+    </li>
+        <li>
+        <a onclick="vis4();visFunction();">
+            <div class="center">
+                <img style="width: 75px !important;" id="my-img3" src="../image/leadsub.png">
+                <p style="font-size: 13px; text-align: center;">Lead<br> Submitted</p>
+                </div>
+        </a>
+    </li>
+        <li>
+        <a onclick="vis5();visFunction4();">
+            <div class="center">
+                <img id="my-img4" src="../image/checked@2x.png">
+                <p style="font-size: 13px; text-align: center;">Leads<br>Assigned</p>
+                </div>
+        </a>
+    </li>
+</li>
+<li>
+    <form action="/logout" id="logout_form" method="post">
+<a onclick="document.getElementById('logout_form').submit();">
+    <div class="center">
+        <img id="my-img5" src="../image/Component 5 – 10.png">
+        <p style="font-size: 13px; text-align: center;">Logout</p>
+        </div>
+</a></form>
+</li>
+</ul>
+
+</div>
+<!---------------NAVBAR END--------------------------->
+<!---------------PROFILE------------------->
+<div id="Profile" class="main">
+    <div class="container">
+       
+      
+        <div>
+            <img class="leadhead-profile" src="../image/Personal Profile.png">
+            <div>
+            <img class="line-profile" src="../image/Path 261.png"></div>
+        </div>
+
+
+        
+        <div >
+            <img class="profileimg" src="../image/female_avatar.png">
+        </div>
+        <div class="det" >
+          <h1 >Name: <%=user.Name%></h1><br>
+          <img class="line1" src="../image/Path 261.png"><br>
+        </div>
+        <div class="det2">
+            <h1>Company: <%=user.OpCo%></h1><br>
+            <img src="../image/Path 261.png"><br>
+        </div>
+         <div class="det3">
+            <h1>Enterprise Email: <%=user.Email%></h1><br>
+            <img src="../image/Path 261.png"><br>
+         </div>
+        
+        <!-- <%=user.Position%> -->
+
+
+
+        <div>
+            <img class="pclip" src="../image/undraw_profile_6l1l.png">
+        </div>
+
+        <div>
+            <img class="pclip2" src="../image/undraw_journey_lwlj.png">
+        </div>
+    </div>
+</div>
+
+
+<!---------------PROFILE END---------------->
+
+<!---------------ANALYTICS------------------->
+<div id="Analytics" class="main">
+    <div class="container">
+        <div>
+            <img class="leadhead-profile" src="../image/Analytics.png">
+            <div>
+            <img class="line-profile" src="../image/Path 26.png"></div>
+            <p style="display: none;" id="value_open"><%=countLead_open%></p>
+            <p style="display: none;" id="value_closed"><%=countLead_closed%></p>
+            <p style="display: none;" id="value_validated"><%=countLead_validated%></p>
+            <p style="display: none;" id="value_rejected"><%=countLead_rejected%></p>
+        </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-4">
+            <div class="sections text-center buttons-analytics ">
+                <button type="button" id="openbtn20" class="btn btn-primary events_btn_img openbtn "  style="isolation: isolate; background-color: #f04705; border-color: #f04705;" onclick="vis20Function()">LEADS</button>                  
+                <button type="button" id="validatedbtn20" class="btn btn-primary events_btn_img validatedbtn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="vis20Function1()">STATUS</button>
+                <button type="button" id="rejectedbtn20" class="btn btn-primary events_btn_img1 rejectedbtn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="vis20Function2()">LEADS CLOSED</button>
+                </div>
+                <form action="/leadexport/<%=userId%>" id="export_form" method="get"> 
+                    <button type="button" onclick="document.getElementById('export_form').submit();" class="export" >Export</button>
+                  </form>
+            </div>
+            <label class="lable"for="start">Total Leads submitted  : </label>
+            <input class="leads_sub"type="text" value="<%=countLead%>" readonly>
+                
+            <div class="members container openimg" id="openimg20">
+                <%for(let lead of leads){%>
+                <div class="imageContainer-analytics">
+                    <img class="sideimge" src="../image/Group 24.png">
+                    <div class="caption text"><%=lead.project_name%> </div>
+                    <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+
+                </div>
+                <%}%> 
+                <div>
+                    <img class="clipart-analytics" src="../image/undraw_envelope_n8lc.svg">
+                </div>
+               
+            </div>
+            
+            
+            <div class="members container validatedimg" id="validatedimg20">
+                <label class="lable1"for="start">Total Leads Open  : </label>
+                <input class="leads_sub1"type="text" value="<%=countLead_open%>" readonly>
+                <br>
+                <label class="lable1"for="start">Total Leads Closed  : </label>
+                <input class="leads_sub"type="text" value="<%=countLead_closed%>" readonly>
+                <br>
+                <label class="lable1"for="start">Total Leads Validated  : </label>
+                <input class="leads_sub1"type="text" value="<%=countLead_validated%>" readonly>
+                <br>
+                <label class="lable1"for="start">Total Leads Rejected  : </label>
+                <input class="leads_sub1"type="text" value="<%=countLead_rejected%>" readonly>
+                <br>
+                <div class="pieChart"> 
+                    <canvas id="pieChart"></canvas>
+                </div>
+                
+                
+            </div>
+            
+            <div class="members container rejectedimg" id="rejectedimg20">
+                <label class="lab"for="start">Closed By Users : <%=countLead_closed%></label>
+                <%for(let lead of leads){%>
+                    <%if(lead.Status == "Closed"){%>
+                    <div class="imageContainer-analytics">
+                        <img class="sideimge" src="../image/Group 25.png">
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+    
+                    </div>
+                    <%}%>   <%}%>
+                
+                <div>
+                    <img class="clipart_" src="../image/undraw_message_sent_1030.svg">
+                    
+                </div>
+            </div>
+            
+           
+            
+        </div>
+        
+    </div>
+</div>
+</div>
+
+<!---------------ANALYTICS END---------------->
+<!---------------ADD LEAD------------------->
+<div id="Add_lead" class="main">
+
+    <div class="container">
+        
+            
+               
+                   
+           
+                     
+            
+                       
+                       <div >
+                          <img class="addlead" src="../image/Add Lead.svg">
+                          <div>
+                          <img class="line1" style=" width: 25%; margin-top: -10px;" src="../image/Path 26.svg">
+                          </div>
+                        </div>
+             
+  
+          <form action="/Submit_lead/<%=userId%>" method="post">
+              <div class="container" style="margin-top: 60px; ">
+                <div class="row" style="margin-top: 50px;">
+                   <div class="row "  >
+                      <div class="col-md-4 " >
+                         <div class="form">
+                            <label for="usr"></label>
+                              <div class="customer">
+                                 <input type="text" class="form-control" name="customer_name" style="margin-top: -160px;" placeholder="Customer Name">
+                              </div>
+                          </div>
+                      </div> 
+                   </div> 
+                  </div>
+                
+                  <div class="row">
+                      <div class="col-md-4 ">
+                          <img class="grp20"src="../image/Grp 20.png" >
+                          <div class="centered"></div>
+                         </div>
+                  </div>
+  
+                 <div class="row">
+                  <div class="col-md-4 ">
+                      <div class="form">
+                          <label for="usr"></label>
+                          <div class="Pname">
+                          <input type="text" class="form-control"  name="project_name" placeholder="Project Name"></div> <br><br><br>
+                        </div>
+                  </div>
+              
+                    <div class="col-md-4"> 
+                      <div class="addpos">
+                      <img id ="addimg" class="file1" src="../image/addimg.png">
+                      </div>
+                      </div>
+                    </div>
+              
+                  <div class="row">
+                  <div class="col-md-4 ">
+                       
+                      <div class="form" >
+                          <label for="usr"></label>
+                          <input type="text" name="project_value" class="form-control" style="margin-top: -20px;" placeholder="Project $ Value">
+                        </div>
+                  </div> 
+                  <input type="text" name="lead_submitted_by" style="display: none;" value="<%=user.Name%>">
+                  </div> 
+
+
+                  <div class="row">
+                     <div class="col-md-12">
+                      <img class="g202" src="../image/Group 202.png" >
+                      <div class="centered"></div>
+                     </div>
+
+                
+                     <div class="col-md-12" id="yoyo">
+                      <div class="form">
+                          <label for="usr"></label>
+                          <div class="autocomplete" style="width:300px;">
+                          <input type="text" name="lead_submitted_to" class="form-control1" style="margin-top: -330px; " autocomplete="off" placeholder="Name" id="myInput">
+                          </div>
+                      </div>
+                     </div>
+                    </div>
+
+                      <textarea name="project_details" class="area" name="message" placeholder="Project Details......" rows="10" cols="30"></textarea>
+                      <br><br>
+              
+                  <div class="container">
+                       <div class="child">
+                          
+                              <input class="btn btn-primary dropdown-toggle" type="text" list="segment"   name="Segment_details" placeholder="Segment Details" autocomplete="off">
+                           
+                            <datalist id="segment">
+                              <option value="Pharma">
+                              <option value="Bio-Pharma">
+                              <option value="Life Sciences">
+                              <option value="Diagnostics">
+                              <option value="Environmental & Applied Solutions">
+                            </datalist>
+                            
+                           
+                      
+                            
+  
+                               <button class="submit1">SUBMIT</button>
+                            
+              
+                        </div> 
+                   </div>
+              </div>
+          </div> 
+      </form>
+    </div>
+  
+
+<!---------------ADD LEAD ENDS---------------->
+<!---------------LEAD SUBMITTED------------------->
+<div id="lead_submitted" class="main">
+    <div id="#Leadsub" class="main">
+        <div class="container">
+        
+        
+        <div>
+            <img class="leadhead" src="../image/Leads Submitted.png">
+            <div>
+            <img class="line" src="../image/Path 26.svg"></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 col-xs-4">
+                <div class="sections text-center">
+                    <button type="button" id="openbtn" class="btn btn-primary events_btn_img openbtn "  style="isolation: isolate; background-color: #f04705; border-color: #f04705;" onclick="visFunction()">OPEN</button>                  
+                    <button type="button" id="validatedbtn" class="btn btn-primary events_btn_img validatedbtn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction1()">VALIDATED</button>
+                    <button type="button" id="rejectedbtn" class="btn btn-primary events_btn_img rejectedbtn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction2()">REJECTED</button>
+                    <button type="button" id="closedbtn" class="btn btn-primary events_btn_img closedbtn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction3()">CLOSED</button>
+                    </div>
+                    
+                </div>
+                
+                    
+                <div class="members container openimg" id="openimg"><%for(let lead of leads){%>
+                    <%if(lead.lead_submitted_by == user.Name && lead.Status == "Open"){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 24.png">
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                        
+                          
+                        
+                    </div>
+                    <%}%>   <%}%>
+                    <div>
+                        <img class="clipart" src="../image/undraw_envelope_n8lc.svg">
+                    </div>
+                   
+                </div>
+                
+                
+                <div class="members container validatedimg" id="validatedimg"><%for(let lead of leads){%>
+                    <%if(lead.Status == "Validated" && lead.lead_submitted_by == user.Name){%>
+                    <div class="imageContainer">
+                        <img  class="sideimge"  src="../image/Group 27.png">
+                        
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                        
+                    </div>
+                    <%}%> <%}%>
+                    <div>
+                        <img class="clipart_" src="../image/undraw_message_sent_1030.svg">
+                        
+                    </div>
+                </div>
+                
+                <div class="members container rejectedimg" id="rejectedimg"><%for(let lead of leads){%>
+                    <%if(lead.Status == "Rejected" && lead.lead_submitted_by == user.Name){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 26.png">
+                        
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                        
+                    </div>
+                    <%}}%>
+                    <div>
+                        <img class="clipart_1" src="../image/undraw_cancel_u1it (1).svg">
+                        
+                    </div>
+                </div>
+                
+                <div class="members container closedimg" id="closedimg"><%for(let lead of leads){%>
+                    <%if(lead.Status == "Closed" && lead.lead_submitted_by == user.Name){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 25.png">
+                        
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                        
+                    </div>
+                    <%}}%>
+                     <div>
+                        <img class="clipart_2" src="../image/undraw_my_files_swob.svg">
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        </div>
+       
+</div>
+</div>
+ 
+
+
+<!---------------LEAD SUBMITTED ENDS---------------->
+<!---------------LEAD ASSIGNED------------------->
+<div id="lead_assigned" class="main">
+    <div id="#Leadsub" class="main">
+        <div class="container">
+        <div >
+            <img class="leadhead" src="../image/Leads Assigned.svg">
+            <div>
+            <img class="line" src="../image/Path 26.svg">
+        </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 col-xs-4">
+                <div class="sections text-center">
+                    <button type="button" id="open_btn" class="btn btn-primary events_btn_img open_btn "  style="isolation: isolate; background-color: #f04705; border-color: #6c63ff;" onclick="visFunction4()">OPEN</button>                          
+                    <button type="button" id="validated_btn" class="btn btn-primary events_btn_img validated_btn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction5()">VALIDATED</button>                   
+                    <button type="button" id="rejected_btn" class="btn btn-primary events_btn_img rejected_btn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction6()">REJECTED</button>                  
+                    <button type="button" id="closed_btn" class="btn btn-primary events_btn_img closed_btn"  style="isolation: isolate; background-color: #6c63ff; border-color: #6c63ff;" onclick="visFunction7()">CLOSED</button>
+                </div>
+                   
+            </div>
+                
+
+                <div class="members container openimg_" id="openimg_"><%for (let lead of leads){%>
+                    <%if(lead.lead_submitted_to == user.Name && lead.Status == "Open"){%>
+                    <div class="imageContainer">
+                        <img  class="sideimge"  src="../image/Group 24.png">
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        
+                        <div class="status1">
+                        <form action="/update_status/<%=lead._id%>/<%=userId%>" method="POST">
+                            <select name="status">
+                                <option value="Validated">Validated</option>
+                                <option value="Rejected">Rejected</option>
+                                
+                              </select>
+                              <button class="update">Update</button>
+                        </form>
+                        </div>
+
+
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                       
+                    </div>
+                    <%}}%>
+                    <div>
+                        <img class="clipart1" src="../image/undraw_Updates_re_o5af.svg">
+                    </div>
+                </div>
+                <div class="members container validatedimg_" id="validatedimg_"><%for (let lead of leads){%>
+                    <%if(lead.lead_submitted_to == user.Name && lead.Status == "Validated"){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 27.png">
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                            
+                            <div class="caption status1">
+                                <form action="/update_status/<%=lead._id%>/<%=userId%>" method="POST">
+                                    <select name="status">
+                                       
+                                        <option value="Closed">Closed</option>
+                                    </select>
+                                    <button class="update">Update</button>
+                                </form>
+                            </div>
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                      
+                          
+                        
+                    </div>
+                    <%}}%>
+                    <div>
+                        <img class="clipart2" src="../image/undraw_Hiring_re_yk5n (1).svg">
+                    </div>
+                </div>
+                <div class="members container rejectedimg_" id="rejectedimg_"><%for (let lead of leads){%>
+                    <%if(lead.lead_submitted_to == user.Name && lead.Status == "Rejected"){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 26.png">
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        
+                      
+
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                        
+                    </div>
+                    <%}}%>
+                    <div>
+                        <img class="clipart3" src="../image/undraw_access_denied_6w73.svg">
+                    </div>
+                </div>
+                <div class="members container closedimg_" id="closedimg_"><%for (let lead of leads){%>
+                    <%if(lead.lead_submitted_to == user.Name && lead.Status == "Closed"){%>
+                    <div class="imageContainer">
+                        <img class="sideimge" src="../image/Group 25.png">
+                        
+                        <div class="caption text"><%=lead.project_name%> </div>
+                        
+                           
+                        <div class="caption text1"><%=lead.customer_name%></div>
+                        <div class="caption text2"><%=lead.project_value%></div>
+                        <div class="caption text3"><%=lead.Segment_details%></div>
+                        
+                       
+
+                        <div class="caption status"> <button  type="button" class="submit"><%=lead.Status%></button></div>
+                       
+                    </div>
+                    <%}}%>
+                    <div>
+                        <img class="clipart4" src="../image/undraw_close_tab_uk6g.svg">
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    <!-- <div class="container">
+        <%for (let lead of leads){%>
+            <%if(lead.lead_submitted_to == user.Name){%>
+                <h1>lead asigned</h1>
+            <%=lead.customer_name%>
+            <%=lead.Status%>
+            <form action="/update_status/<%=lead._id%>/<%=userId%>" method="POST">
+                <select name="status">
+                    <option value="Validated">Validated</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                  <button>Update</button>
+            </form>
+            <%}%><%}%>
+    </div> -->
+</div>
+
+
+
+<!---------------LEAD ASSIGNED ENDS---------------->
+      
+        <br>
+
+
+     <!--CAUTION:::::::: DONOT MOVE THE BELOW SCRIPT TO SCRIPT.JS 👇👇 -->
+     <script>
+        function autocomplete(inp, arr) {
+          /*the autocomplete function takes two arguments,
+          the text field element and an array of possible autocompleted values:*/
+          var currentFocus;
+          /*execute a function when someone writes in the text field:*/
+          inp.addEventListener("input", function(e) {
+              var a, b, i, val = this.value;
+              /*close any already open lists of autocompleted values*/
+              closeAllLists();
+              if (!val) { return false;}
+              currentFocus = -1;
+              /*create a DIV element that will contain the items (values):*/
+              a = document.createElement("DIV");
+              a.setAttribute("id", this.id + "autocomplete-list");
+              a.setAttribute("class", "autocomplete-items");
+              /*append the DIV element as a child of the autocomplete container:*/
+              this.parentNode.appendChild(a);
+              /*for each item in the array...*/
+              for (i = 0; i < arr.length; i++) {
+                /*check if the item starts with the same letters as the text field value:*/
+                if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                  /*create a DIV element for each matching element:*/
+                  b = document.createElement("DIV");
+                  /*make the matching letters bold:*/
+                  b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                  b.innerHTML += arr[i].substr(val.length);
+                  /*insert a input field that will hold the current array item's value:*/
+                  b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                  /*execute a function when someone clicks on the item value (DIV element):*/
+                  b.addEventListener("click", function(e) {
+                      /*insert the value for the autocomplete text field:*/
+                      inp.value = this.getElementsByTagName("input")[0].value;
+                      /*close the list of autocompleted values,
+                      (or any other open lists of autocompleted values:*/
+                      closeAllLists();
+                  });
+                  a.appendChild(b);
+                }
+              }
+          });
+          /*execute a function presses a key on the keyboard:*/
+          inp.addEventListener("keydown", function(e) {
+              var x = document.getElementById(this.id + "autocomplete-list");
+              if (x) x = x.getElementsByTagName("div");
+              if (e.keyCode == 40) {
+                /*If the arrow DOWN key is pressed,
+                increase the currentFocus variable:*/
+                currentFocus++;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 38) { //up
+                /*If the arrow UP key is pressed,
+                decrease the currentFocus variable:*/
+                currentFocus--;
+                /*and and make the current item more visible:*/
+                addActive(x);
+              } else if (e.keyCode == 13) {
+                /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                e.preventDefault();
+                if (currentFocus > -1) {
+                  /*and simulate a click on the "active" item:*/
+                  if (x) x[currentFocus].click();
+                }
+              }
+          });
+          function addActive(x) {
+            /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+          }
+          function removeActive(x) {
+            /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+              x[i].classList.remove("autocomplete-active");
+            }
+          }
+          function closeAllLists(elmnt) {
+            /*close all autocomplete lists in the document,
+            except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+              if (elmnt != x[i] && elmnt != inp) {
+                x[i].parentNode.removeChild(x[i]);
+              }
+            }
+          }
+          /*execute a function when someone clicks in the document:*/
+          document.addEventListener("click", function (e) {
+              closeAllLists(e.target);
+          });
+        }
+        
+        /*An array containing all the country names in the world:*/
+        var  users= [<%for(let user of allUsers){%>
+           "<%=user.Name%>",
+            <%}%>]
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("myInput"),users );
+        </script>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+        <script src="../css/script.js" type="text/javascript"></script>        
+        <!-- <script src="https://kit.fontawesome.com/yourcode.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+        <script src="/css/myChart.js" type="text/javascript"></script>
+        <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+              
+        
+</body>
+</html>
