@@ -16,6 +16,6 @@ OR
 
 Register an user yourself.
 
-__ NOTE: Admin can’t be changed once created __
+ **NOTE: Admin can’t be changed once created**
 
 The stack we have used is NodeJS, express, MongoDB.
